@@ -251,3 +251,62 @@ export const popularPrompts = [
     category: 'business'
   }
 ]
+
+/**
+ * Tool interface and data definitions
+ */
+
+// Define the Tool interface
+export interface Tool {
+  id: string;
+  name?: string;        // Make optional since toolsData uses title instead
+  title?: string;       // From toolsData
+  description: string;
+  shortDescription?: string;
+  icon?: any;           // Changed from string to any to accommodate IconType
+  category?: string;
+  enabled?: boolean;    // Make optional since toolsData doesn't have this
+  isPopular?: boolean;  // Add other properties from toolsData
+  isNew?: boolean;
+}
+
+// Utility function to convert a toolsData item to a Tool
+export function convertToTool(toolData: any): Tool {
+  return {
+    id: toolData.id,
+    name: toolData.title || toolData.name, // Use title as name if available
+    title: toolData.title,
+    description: toolData.description,
+    shortDescription: toolData.shortDescription,
+    icon: toolData.icon,
+    category: toolData.category,
+    enabled: true, // Default to enabled
+    isPopular: toolData.isPopular,
+    isNew: toolData.isNew
+  };
+}
+
+// Example tool data
+export const tools: Tool[] = [
+  {
+    id: 'search',
+    name: 'Web Search',
+    description: 'Search the internet for information',
+    enabled: true
+  },
+  {
+    id: 'calculator',
+    name: 'Calculator',
+    description: 'Perform mathematical calculations',
+    enabled: true
+  },
+  {
+    id: 'docs',
+    name: 'Document Retrieval',
+    description: 'Access and search through documents',
+    enabled: true
+  }
+];
+
+// Default export for convenience
+export default tools;
