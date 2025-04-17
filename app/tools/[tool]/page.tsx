@@ -9,7 +9,7 @@ import SummarizerTool from '@/components/tools/SummarizerTool'
 import ToolCard from '@/components/ToolCard'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { FaArrowLeft, FaStar, FaBookmark } from 'react-icons/fa'
+import { FaArrowLeft, FaStar, FaBookmark, FaArrowRight } from 'react-icons/fa'
 
 export default function ToolPage({ params }: { params: { tool: string } }) {
   const [isLoaded, setIsLoaded] = useState(false)
